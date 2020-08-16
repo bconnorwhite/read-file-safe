@@ -14,7 +14,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bconnorwhite/module.git"
+    "url": "git+https://github.com/bconnorwhite/read-file-safe.git"
   },
   "main": "./build/index.js",
   "scripts": {
