@@ -1,7 +1,7 @@
 # read-file-safe
-![dependencies](https://img.shields.io/david/safe-read-file)
-![typescript](https://img.shields.io/github/languages/top/bconnorwhite/safe-read-file)
-![npm](https://img.shields.io/npm/v/safe-read-file)
+![dependencies](https://img.shields.io/david/read-file-safe)
+![typescript](https://img.shields.io/github/languages/top/bconnorwhite/read-file-safe)
+![npm](https://img.shields.io/npm/v/read-file-safe)
 
 Read files without try catch.
 
@@ -15,7 +15,7 @@ yarn add read-file-safe
 ```ts
 import { readFile, readFileSync } from "read-file-safe";
 
-readFileSync(path) => string | undefined;
+readFileSync(path: string) => string | undefined;
 
 readFile(path: string) => Promise<string | undefined>;
 ```
