@@ -1,5 +1,5 @@
 # read-file-safe
-![dependencies](https://img.shields.io/david/read-file-safe)
+![dependencies](https://img.shields.io/david/bconnorwhite/read-file-safe)
 ![typescript](https://img.shields.io/github/languages/top/bconnorwhite/read-file-safe)
 ![npm](https://img.shields.io/npm/v/read-file-safe)
 
