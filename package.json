@@ -22,7 +22,7 @@
     "prepublishOnly": "yarn build"
   },
   "devDependencies": {
-    "@bconnorwhite/bob": "^1.9.6",
+    "@bconnorwhite/bob": "^1.9.7",
     "@types/node": "^14.0.27"
   }
 }
