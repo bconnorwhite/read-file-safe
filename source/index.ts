@@ -1,32 +1,35 @@
 import fs, { promises } from "fs";
 
-type Options = {
+type Options<T extends boolean> = {
   /**
-   * Return content as a buffer. Default: `false`
+   * Return content as a Buffer. Default: `false`
    */
-  buffer?: boolean;
+  buffer?: T;
 }
+
+type BufferArgs = [path: string, options: Options<true>];
+type StringArgs = [path: string, options?: Options<false>];
+
+type Args = StringArgs | BufferArgs;
+
+type ReturnValue<T> = T extends StringArgs ? string : Buffer;
 
 function getEncoding(buffer?: boolean) {
   return buffer ? null : "utf8";
 }
 
-export async function readFile(path: string, options?: { buffer?: false }): Promise<string | undefined>;
-export async function readFile(path: string, options: { buffer: true }): Promise<Buffer | undefined>;
-export async function readFile(path: string, options: Options = {}) {
+export async function readFile<T extends Args>(...[path, options = {}]: T): Promise<ReturnValue<T> | undefined> {
   return promises.readFile(path, { encoding: getEncoding(options.buffer) }).then((content) => {
-    return content;
+    return content as ReturnValue<T>;
   }).catch(() => {
     return undefined;
   });
 }
 
-export function readFileSync(path: string, options?: { buffer?: false }): string | undefined;
-export function readFileSync(path: string, options: { buffer: true }): Buffer | undefined;
-export function readFileSync(path: string, options: Options = {}) {
+export function readFileSync<T extends Args>(...[path, options = {}]: T): ReturnValue<T> | undefined {
   try {
     // eslint-disable-next-line no-sync
-    return fs.readFileSync(path, { encoding: getEncoding(options.buffer) });
+    return fs.readFileSync(path, { encoding: getEncoding(options.buffer) }) as ReturnValue<T>;
   } catch(e) {
     return undefined;
   }
