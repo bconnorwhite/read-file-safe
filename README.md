@@ -1,5 +1,7 @@
 <div align="center">
-  <img src="assets/header.svg" />
+  <a href="https://npmjs.com/package/read-file-safe">
+    <img src="assets/header.svg" />
+  </a>
   <a href="https://npmjs.com/package/read-file-safe">
     <img alt="NPM" src="https://img.shields.io/npm/v/read-file-safe.svg">
   </a>
