@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>read-file-safe</h1>
+  <img src="assets/header.svg" />
   <a href="https://npmjs.com/package/read-file-safe">
     <img alt="NPM" src="https://img.shields.io/npm/v/read-file-safe.svg">
   </a>
