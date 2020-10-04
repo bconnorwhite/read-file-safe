@@ -1,4 +1,4 @@
-<svg fill="none" viewBox="0 0 800 165" width="800" height="165" xmlns="http://www.w3.org/2000/svg">
+<svg fill="none" viewBox="0 0 800 170" width="800" height="170" xmlns="http://www.w3.org/2000/svg">
 	<foreignObject width="100%" height="100%">
 		<div xmlns="http://www.w3.org/1999/xhtml">
       <style>
@@ -13,7 +13,7 @@
           color: #111;
           padding-bottom: .3em;
           border-bottom: 1px solid #eaecef;
-          margin-top: 4px;
+          margin-top: 9px;
           margin-bottom: 16px;
           line-height: 1.25;
           font-size: 32px;
