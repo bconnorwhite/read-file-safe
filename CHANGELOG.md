@@ -1,3 +1,13 @@
+## [1.0.8](https://github.com/bconnorwhite/read-file-safe/compare/v1.0.7...v1.0.8) (2020-10-04)
+
+
+### Bug Fixes
+
+* export options type ([73db28f](https://github.com/bconnorwhite/read-file-safe/commit/73db28ff230f329b4e4fece81171f9bdaf881602))
+* improve types ([bf7baac](https://github.com/bconnorwhite/read-file-safe/commit/bf7baac89a05fb949b50f4f2819a76d6889ebb6f))
+
+
+
 ## [1.0.7](https://github.com/bconnorwhite/read-file-safe/compare/v1.0.6...v1.0.7) (2020-10-03)
 
 
