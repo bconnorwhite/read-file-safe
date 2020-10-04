@@ -65,7 +65,7 @@ readFileSync(path: string) => string | undefined;
 ## Related Packages
 
 - [read-dir-safe](https://www.npmjs.com/package/read-dir-safe): Read directories recursively or non-recursively
-- [remove-dir-safe](https://www.npmjs.com/package/remove-dir-safe): Remove directories recursively or non-recursively
 - [write-dir-safe](https://www.npmjs.com/package/write-dir-safe): Create directories and their parents recursively
+- [remove-dir-safe](https://www.npmjs.com/package/remove-dir-safe): Remove directories recursively or non-recursively
 - [write-file-safe](https://www.npmjs.com/package/write-file-safe): Write files, and parent directories if necessary
 - [remove-file-safe](https://www.npmjs.com/package/remove-file-safe): Remove files without try catch
