@@ -1,6 +1,6 @@
 import fs, { promises } from "fs";
 
-type Options<T extends boolean> = {
+export type Options<T extends boolean> = {
   /**
    * Return content as a Buffer. Default: `false`
    */
