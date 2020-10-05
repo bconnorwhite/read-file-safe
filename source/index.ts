@@ -7,29 +7,31 @@ export type Options<T extends boolean> = {
   buffer?: T;
 }
 
-type BufferArgs = [path: string, options: Options<true>];
-type StringArgs = [path: string, options?: Options<false>];
+type BufferArgs = [options: Options<true>];
+type StringArgs = [options?: Options<false>];
 
-type Args = StringArgs | BufferArgs;
+export type Args = StringArgs | BufferArgs;
 
-type ReturnValue<T> = T extends StringArgs ? string : Buffer;
+type ReturnContent<T> = T extends StringArgs ? string : Buffer;
+
+export type ReturnValue<T> = ReturnContent<T> | undefined;
 
 function getEncoding(buffer?: boolean) {
   return buffer ? null : "utf8";
 }
 
-export async function readFile<T extends Args>(...[path, options = {}]: T): Promise<ReturnValue<T> | undefined> {
+export async function readFile<T extends Args>(path: string, ...[options = {}]: T): Promise<ReturnValue<T>> {
   return promises.readFile(path, { encoding: getEncoding(options.buffer) }).then((content) => {
-    return content as ReturnValue<T>;
+    return content as ReturnContent<T>;
   }).catch(() => {
     return undefined;
   });
 }
 
-export function readFileSync<T extends Args>(...[path, options = {}]: T): ReturnValue<T> | undefined {
+export function readFileSync<T extends Args>(path: string, ...[options = {}]: T): ReturnValue<T> {
   try {
     // eslint-disable-next-line no-sync
-    return fs.readFileSync(path, { encoding: getEncoding(options.buffer) }) as ReturnValue<T>;
+    return fs.readFileSync(path, { encoding: getEncoding(options.buffer) }) as ReturnContent<T>;
   } catch(e) {
     return undefined;
   }
