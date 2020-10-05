@@ -1,6 +1,6 @@
 {
   "name": "read-file-safe",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Read files without try catch",
   "license": "MIT",
   "author": {
