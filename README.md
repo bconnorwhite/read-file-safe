@@ -87,6 +87,8 @@ const file = readFileSync(path, { buffer: true }); // Buffer | undefined
 [MIT](https://opensource.org/licenses/MIT) - _MIT License_
 <!--END FOOTER-->
 
+<br />
+
 ## Related Packages
 
 - [fs-safe](https://www.npmjs.com/package/fs-safe): A simple fs wrapper that doesn't throw
