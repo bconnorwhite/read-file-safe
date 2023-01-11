@@ -1,3 +1,7 @@
+# [2.0.0](https://github.com/bconnorwhite/read-file-safe/compare/v1.0.10...v2.0.0) (2023-01-11)
+
+
+
 ## [1.0.10](https://github.com/bconnorwhite/read-file-safe/compare/v1.0.9...v1.0.10) (2020-10-05)
 
 
