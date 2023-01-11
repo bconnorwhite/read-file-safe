@@ -1,30 +1,37 @@
-<div align="center">
-  <a href="https://github.com/bconnorwhite/read-file-safe">
-    <img alt="read-file-safe" src="assets/header.svg" />
-  </a>
+<!--BEGIN HEADER-->
+<div id="top" align="center">
+  <h1>read-file-safe</h1>
   <a href="https://npmjs.com/package/read-file-safe">
     <img alt="NPM" src="https://img.shields.io/npm/v/read-file-safe.svg">
   </a>
   <a href="https://github.com/bconnorwhite/read-file-safe">
     <img alt="TypeScript" src="https://img.shields.io/github/languages/top/bconnorwhite/read-file-safe.svg">
   </a>
-  <a href='https://coveralls.io/github/bconnorwhite/read-file-safe?branch=master'>
+  <a href="https://coveralls.io/github/bconnorwhite/read-file-safe?branch=master">
     <img alt="Coverage Status" src="https://img.shields.io/coveralls/github/bconnorwhite/read-file-safe.svg?branch=master">
-  </a>
-  <a href="https://github.com/bconnorwhite/read-file-safe">
-    <img alt="GitHub Stars" src="https://img.shields.io/github/stars/bconnorwhite/read-file-safe?label=Stars%20Appreciated%21&style=social">
-  </a>
-  <a href="https://twitter.com/bconnorwhite">
-    <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/bconnorwhite.svg?label=%40bconnorwhite&style=social">
   </a>
 </div>
 
 <br />
 
-> Read files without try catch.
+<blockquote align="center">Read files without try catch.</blockquote>
 
-- Returns string or Buffer if successful.
-- Returns `undefined` on error rather than throwing.
+<br />
+
+_If I should maintain this repo, please ⭐️_
+<a href="https://github.com/bconnorwhite/read-file-safe">
+  <img align="right" alt="GitHub stars" src="https://img.shields.io/github/stars/bconnorwhite/read-file-safe?label=%E2%AD%90%EF%B8%8F&style=social">
+</a>
+
+_DM me on [Twitter](https://twitter.com/bconnorwhite) if you have questions or suggestions._
+<a href="https://twitter.com/bconnorwhite">
+  <img align="right" alt="Twitter" src="https://img.shields.io/twitter/url?label=%40bconnorwhite&style=social&url=https%3A%2F%2Ftwitter.com%2Fbconnorwhite">
+</a>
+
+---
+<!--END HEADER-->
+
+This package handles filesystem errors for you. If a file does not exist or cannot be accessed, `undefined` is returned instead of throwing an error.
 
 ## Installation
 
@@ -36,32 +43,49 @@ yarn add read-file-safe
 npm install read-file-safe
 ```
 
-## API
+```sh
+pnpm add read-file-safe
+```
+
+## Usage
+
+By default, `readFile` and `readFileSync` return a string:
 
 ```ts
 import { readFile, readFileSync } from "read-file-safe";
 
-readFile(path: string) => Promise<string | undefined>;
+const path = "./path/to/file.ext";
 
-readFileSync(path: string) => string | undefined;
+const file = readFile(path); // Promise<string | undefined>
+
+const file = readFileSync(path); // string | undefined
 ```
 
-<br />
+You can also request a Buffer:
 
-<h2>Dev Dependencies<img align="right" alt="David" src="https://img.shields.io/david/dev/bconnorwhite/read-file-safe.svg"></h2>
+```ts
+import { readFile, readFileSync } from "read-file-safe";
 
-- [@bconnorwhite/bob](https://www.npmjs.com/package/@bconnorwhite/bob): Bob is a toolkit for TypeScript projects
-- [@types/mock-fs](https://www.npmjs.com/package/@types/mock-fs): TypeScript definitions for mock-fs
-- [@types/node](https://www.npmjs.com/package/@types/node): TypeScript definitions for Node.js
-- [mock-fs](https://www.npmjs.com/package/mock-fs): A configurable mock file system.  You know, for testing.
+const file = readFile(path, { buffer: true }); // Promise<Buffer | undefined>
 
-<br />
+const file = readFileSync(path, { buffer: true }); // Buffer | undefined
+```
 
-<h2>License <img align="right" alt="license" src="https://img.shields.io/npm/l/read-file-safe.svg"></h2>
-
-[MIT](https://opensource.org/licenses/MIT)
+<!--BEGIN FOOTER-->
 
 <br />
+
+<h2>Dev Dependencies</h2>
+
+- [autorepo](https://www.npmjs.com/package/autorepo): Autorepo abstracts away your dev dependencies, providing a single command to run all of your scripts.
+
+
+<br />
+
+<h2 id="license">License <a href="https://opensource.org/licenses/MIT"><img align="right" alt="license" src="https://img.shields.io/npm/l/read-file-safe.svg"></a></h2>
+
+[MIT](https://opensource.org/licenses/MIT) - _MIT License_
+<!--END FOOTER-->
 
 ## Related Packages
 
