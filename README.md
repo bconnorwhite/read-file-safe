@@ -61,7 +61,9 @@ const file = readFile(path); // Promise<string | undefined>
 const file = readFileSync(path); // string | undefined
 ```
 
-You can also request a Buffer:
+### Return Type
+
+Setting the `buffer` option to `true` will return a `Buffer` instead of a string:
 
 ```ts
 import { readFile, readFileSync } from "read-file-safe";
@@ -71,6 +73,18 @@ const file = readFile(path, { buffer: true }); // Promise<Buffer | undefined>
 const file = readFileSync(path, { buffer: true }); // Buffer | undefined
 ```
 
+### Decompression
+
+Setting the `compression` option will decompress the file before returning it. Both `gzip` and `brotli` are supported:
+
+```ts
+import { readFile, readFileSync } from "read-file-safe";
+
+const file = readFile(path, { compression: "gzip" }); // Promise<string | undefined>
+
+const file = readFile(path, { compression: "brotli" }); // Promise<string | undefined>
+```
+
 <!--BEGIN FOOTER-->
 
 <br />
@@ -78,7 +92,6 @@ const file = readFileSync(path, { buffer: true }); // Buffer | undefined
 <h2>Dev Dependencies</h2>
 
 - [autorepo](https://www.npmjs.com/package/autorepo): Autorepo abstracts away your dev dependencies, providing a single command to run all of your scripts.
-
 
 <br />
 

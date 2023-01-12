@@ -1,21 +1,55 @@
-import fs, { promises } from "node:fs";
+import fs, { promises } from "fs";
+import { unzip, unzipSync, brotliDecompress, brotliDecompressSync } from "zlib";
+
+export type CompressionMethod = keyof typeof decompressionMethods;
 
 export type Options = {
   /**
    * Return content as a Buffer. Default: `false`
    */
   buffer?: boolean;
+  /**
+   * Compression method to decompress the file against. Default: `none`
+   */
+  compression?: CompressionMethod;
 };
 
-export type ContentType<O extends Options | undefined = undefined> = O extends { buffer: true } ? Buffer : string;
+const decompressionMethods = {
+  none: {
+    sync: (buffer: Buffer) => buffer,
+    async: (buffer: Buffer, callback: (error: Error | null, result: Buffer) => void) => {
+      callback(null, buffer);
+    }
+  },
+  gzip: {
+    sync: unzipSync,
+    async: unzip
+  },
+  brotli: {
+    sync: brotliDecompressSync,
+    async: brotliDecompress
+  }
+} as const;
 
-function getEncoding(buffer?: boolean) {
-  return buffer ? null : "utf8";
+export type ContentType<O extends Options | undefined = undefined> = O extends { buffer: true }
+  ? Buffer
+  : string;
+
+function format<O extends Options | undefined = undefined>(buffer: Buffer, options?: O): ContentType<O> {
+  return (options?.buffer ? buffer : buffer.toString()) as ContentType<O>;
 }
 
 export async function readFile<O extends Options | undefined = undefined>(path: string, options?: O): Promise<ContentType<O> | undefined> {
-  return promises.readFile(path, { encoding: getEncoding(options?.buffer) }).then((content) => {
-    return content as ContentType<O>;
+  return promises.readFile(path).then((content) => {
+    return new Promise<ContentType<O> | undefined>((resolve) => {
+      decompressionMethods[options?.compression ?? "none"].async(content, (error, result) => {
+        if(error) {
+          resolve(undefined);
+        } else {
+          resolve(format(result, options));
+        }
+      });
+    });
   }).catch(() => {
     return undefined;
   });
@@ -23,8 +57,9 @@ export async function readFile<O extends Options | undefined = undefined>(path: 
 
 export function readFileSync<O extends Options | undefined = undefined>(path: string, options?: O): ContentType<O> | undefined {
   try {
-    // eslint-disable-next-line no-sync
-    return fs.readFileSync(path, { encoding: getEncoding(options?.buffer) }) as ContentType<O>;
+    const buffer = fs.readFileSync(path);
+    const decompressed = decompressionMethods[options?.compression ?? "none"].sync(buffer);
+    return format(decompressed, options);
   } catch(e) {
     return undefined;
   }
