@@ -1,3 +1,12 @@
+# [2.1.0](https://github.com/bconnorwhite/read-file-safe/compare/v2.0.0...v2.1.0) (2023-01-12)
+
+
+### Features
+
+* added support for decompression ([a385bb0](https://github.com/bconnorwhite/read-file-safe/commit/a385bb0fa2f85eea80f08b8162919e2994bd50d3))
+
+
+
 # [2.0.0](https://github.com/bconnorwhite/read-file-safe/compare/v1.0.10...v2.0.0) (2023-01-11)
 
 
