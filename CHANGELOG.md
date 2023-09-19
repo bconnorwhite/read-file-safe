@@ -1,3 +1,12 @@
+## [2.1.1](https://github.com/bconnorwhite/read-file-safe/compare/v2.1.0...v2.1.1) (2023-09-19)
+
+
+### Bug Fixes
+
+* avoid destructing zlib which doesn't exist in bun ([746b440](https://github.com/bconnorwhite/read-file-safe/commit/746b4409b7f1279ed0fd6a515409a73e8bab83ae))
+
+
+
 # [2.1.0](https://github.com/bconnorwhite/read-file-safe/compare/v2.0.0...v2.1.0) (2023-01-12)
 
 
