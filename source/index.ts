@@ -1,5 +1,5 @@
 import fs, { promises } from "fs";
-import { unzip, unzipSync, brotliDecompress, brotliDecompressSync } from "zlib";
+import zlib from "zlib";
 
 export type CompressionMethod = keyof typeof decompressionMethods;
 
@@ -22,12 +22,12 @@ const decompressionMethods = {
     }
   },
   gzip: {
-    sync: unzipSync,
-    async: unzip
+    sync: zlib.unzipSync,
+    async: zlib.unzip
   },
   brotli: {
-    sync: brotliDecompressSync,
-    async: brotliDecompress
+    sync: zlib.brotliDecompressSync,
+    async: zlib.brotliDecompress
   }
 } as const;
 
