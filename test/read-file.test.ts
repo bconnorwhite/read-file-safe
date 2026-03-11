@@ -1,9 +1,11 @@
-import { beforeEach, test, afterEach, expect } from "@jest/globals";
-import { gzipSync, brotliCompressSync } from "zlib";
+/* eslint-disable import/no-relative-parent-imports, @typescript-eslint/no-floating-promises */
+import assert from "node:assert/strict";
+import { beforeEach, test, afterEach } from "node:test";
+import { gzipSync, brotliCompressSync } from "node:zlib";
 import mock, { restore, directory } from "mock-fs";
-import { readFile } from "../source/index.js";
+import { readFile } from "../src/index.ts";
 
-beforeEach(async () => {
+beforeEach(() => {
   mock({
     "/test": {
       "note.md": "hello world!"
@@ -21,41 +23,41 @@ beforeEach(async () => {
   });
 });
 
-afterEach(async () => {
+afterEach(() => {
   restore();
 });
 
 test("read", async () => {
   const text = await readFile("/test/note.md");
-  expect(text).toBe("hello world!");
+  assert.equal(text, "hello world!");
 });
 
 test("read buffer", async () => {
   const text = await readFile("/test/note.md", { buffer: true });
-  expect(text?.toString()).toBe("hello world!");
+  assert.equal(text?.toString(), "hello world!");
 });
 
 test("read empty", async () => {
   const text = await readFile("/test/note2.md");
-  expect(text).toBe(undefined);
+  assert.equal(text, undefined);
 });
 
 test("read no access", async () => {
   const text = await readFile("/no-access/b");
-  expect(text).toBe(undefined);
+  assert.equal(text, undefined);
 });
 
 test("read gzip", async () => {
   const text = await readFile("/compressed/note.md.gz", { compression: "gzip" });
-  expect(text).toBe("hello world!");
+  assert.equal(text, "hello world!");
 });
 
 test("read brotli", async () => {
   const text = await readFile("/compressed/note.md.br", { compression: "brotli" });
-  expect(text).toBe("hello world!");
+  assert.equal(text, "hello world!");
 });
 
 test("read invalid", async () => {
   const text = await readFile("/compressed/note.md.gz", { compression: "brotli" });
-  expect(text).toBe(undefined);
+  assert.equal(text, undefined);
 })

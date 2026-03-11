@@ -16,17 +16,6 @@
 
 <blockquote align="center">Read files without try catch.</blockquote>
 
-<br />
-
-_If I should maintain this repo, please ⭐️_
-<a href="https://github.com/bconnorwhite/read-file-safe">
-  <img align="right" alt="GitHub stars" src="https://img.shields.io/github/stars/bconnorwhite/read-file-safe?label=%E2%AD%90%EF%B8%8F&style=social">
-</a>
-
-_DM me on [Twitter](https://twitter.com/bconnorwhite) if you have questions or suggestions._
-<a href="https://twitter.com/bconnorwhite">
-  <img align="right" alt="Twitter" src="https://img.shields.io/twitter/url?label=%40bconnorwhite&style=social&url=https%3A%2F%2Ftwitter.com%2Fbconnorwhite">
-</a>
 
 ---
 <!--END HEADER-->
@@ -35,17 +24,54 @@ This package handles filesystem errors for you. If a file does not exist or cann
 
 ## Installation
 
-```sh
-yarn add read-file-safe
-```
+<details open>
+  <summary>
+    <a href="https://www.npmjs.com/package/read-file-safe">
+      <img src="https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=white" alt="NPM" />
+    </a>
+  </summary>
 
 ```sh
 npm install read-file-safe
 ```
 
+</details>
+
+<details>
+  <summary>
+    <a href="https://yarnpkg.com/package/read-file-safe">
+      <img src="https://img.shields.io/badge/yarn-2C8EBB?logo=yarn&logoColor=white" alt="Yarn" />
+    </a>
+  </summary>
+
+```sh
+yarn add read-file-safe
+```
+
+</details>
+
+<details>
+  <summary>
+    <img src="https://img.shields.io/badge/pnpm-F69220?logo=pnpm&logoColor=white" alt="PNPM" />
+  </summary>
+
 ```sh
 pnpm add read-file-safe
 ```
+
+</details>
+
+<details>
+  <summary>
+    <img src="https://img.shields.io/badge/bun-EE81C3?logo=bun&logoColor=white" alt="Bun" />
+  </summary>
+
+```sh
+bun add read-file-safe
+```
+
+</details>
+
 
 ## Usage
 
@@ -86,15 +112,6 @@ const file = readFile(path, { compression: "brotli" }); // Promise<string | unde
 ```
 
 <!--BEGIN FOOTER-->
-
-<br />
-
-<h2>Dev Dependencies</h2>
-
-- [autorepo](https://www.npmjs.com/package/autorepo): Autorepo abstracts away your dev dependencies, providing a single command to run all of your scripts.
-
-<br />
-
 <h2 id="license">License <a href="https://opensource.org/licenses/MIT"><img align="right" alt="license" src="https://img.shields.io/npm/l/read-file-safe.svg"></a></h2>
 
 [MIT](https://opensource.org/licenses/MIT) - _MIT License_

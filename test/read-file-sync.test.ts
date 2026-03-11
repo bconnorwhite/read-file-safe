@@ -1,9 +1,11 @@
-import { beforeEach, test, afterEach, expect } from "@jest/globals";
-import { gzipSync, brotliCompressSync } from "zlib";
+/* eslint-disable import/no-relative-parent-imports, @typescript-eslint/no-floating-promises */
+import assert from "node:assert/strict";
+import { beforeEach, test, afterEach } from "node:test";
+import { gzipSync, brotliCompressSync } from "node:zlib";
 import mock, { restore, directory } from "mock-fs";
-import { readFileSync } from "../source/index.js";
+import { readFileSync } from "../src/index.ts";
 
-beforeEach(async () => {
+beforeEach(() => {
   mock({
     "/test": {
       "note.md": "hello world!"
@@ -21,34 +23,34 @@ beforeEach(async () => {
   });
 });
 
-afterEach(async () => {
+afterEach(() => {
   restore();
 });
 
-test("read sync", async () => {
-  expect(readFileSync("/test/note.md")).toBe("hello world!");
+test("read sync", () => {
+  assert.equal(readFileSync("/test/note.md"), "hello world!");
 });
 
-test("read buffer sync", async () => {
-  expect(readFileSync("/test/note.md", { buffer: true })?.toString()).toBe("hello world!");
+test("read buffer sync", () => {
+  assert.equal(readFileSync("/test/note.md", { buffer: true })?.toString(), "hello world!");
 });
 
-test("read empty sync", async () => {
-  expect(readFileSync("/test/note2.md")).toBe(undefined);
+test("read empty sync", () => {
+  assert.equal(readFileSync("/test/note2.md"), undefined);
 });
 
-test("read no access sync", async () => {
-  expect(readFileSync("/no-access/b")).toBe(undefined);
+test("read no access sync", () => {
+  assert.equal(readFileSync("/no-access/b"), undefined);
 });
 
-test("read gzip sync", async () => {
-  expect(readFileSync("/compressed/note.md.gz", { compression: "gzip" })).toBe("hello world!");
+test("read gzip sync", () => {
+  assert.equal(readFileSync("/compressed/note.md.gz", { compression: "gzip" }), "hello world!");
 });
 
-test("read brotli sync", async () => {
-  expect(readFileSync("/compressed/note.md.br", { compression: "brotli" })).toBe("hello world!");
+test("read brotli sync", () => {
+  assert.equal(readFileSync("/compressed/note.md.br", { compression: "brotli" }), "hello world!");
 });
 
-test("read invalid sync", async () => {
-  expect(readFileSync("/compressed/note.md.gz", { compression: "brotli" })).toBe(undefined);
+test("read invalid sync", () => {
+  assert.equal(readFileSync("/compressed/note.md.gz", { compression: "brotli" }), undefined);
 });

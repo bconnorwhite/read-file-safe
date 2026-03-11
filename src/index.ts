@@ -1,5 +1,5 @@
 import fs, { promises } from "fs";
-import zlib from "zlib";
+import zlib from "node:zlib";
 
 export type CompressionMethod = keyof typeof decompressionMethods;
 
