@@ -46,7 +46,7 @@
     "prepack": "npm run build",
     "release": "npm publish",
     "test": "npm run test:node",
-    "test:node": "node --test ./test/*.test.ts",
+    "test:node": "tsx --test ./test/*.test.ts",
     "typecheck": "npm run build && tsc --project ./test/tsconfig.json"
   },
   "devDependencies": {
@@ -62,6 +62,7 @@
     "mock-fs": "^5.5.0",
     "npm-package-json-lint": "^9.1.0",
     "npm-package-json-lint-config-bconnorwhite": "^1.0.0",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   },
   "eslintConfig": {
